@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>1차 선택과목 조사 - 2학년</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff8fb1;
+            --light-pink: #ffe4e1;
+            --bg-color: #fff9fb;
+            --accent-pink: #ff6b9d;
+            --card-bg: #ffffff;
+            --text-main: #4a4a4a;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 24px;
+            padding: 56px 30px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 143, 177, 0.25);
+        }
+
+        .header-card .icon {
+            font-size: 52px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .header-card h1 {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .header-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            word-break: keep-all;
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .back-link:active {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            .header-card {
+                padding: 40px 24px;
+            }
+
+            .header-card h1 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-card">
+        <span class="icon">🔜</span>
+        <h1>2학년 선택과목 조사</h1>
+        <p>곧 오픈 예정입니다<br>조금만 기다려 주세요!</p>
+    </div>
+    <a href="index.html" class="back-link">← 메인 화면으로 돌아가기</a>
+</div>
+
+</body>
+</html>

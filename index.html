@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>선택과목 조사</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff8fb1;
+            --light-pink: #ffe4e1;
+            --bg-color: #fff9fb;
+            --accent-pink: #ff6b9d;
+            --card-bg: #ffffff;
+            --text-main: #4a4a4a;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            border-radius: 24px;
+            padding: 44px 30px 36px;
+            margin-bottom: 28px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 143, 177, 0.25);
+            text-align: center;
+        }
+
+        .header-card .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .header-card h1 {
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .header-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            word-break: keep-all;
+            line-height: 1.5;
+        }
+
+        .grade-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .grade-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .grade-card:active {
+            transform: scale(0.98);
+        }
+
+        .grade-card.active {
+            background: white;
+            border: 2px solid rgba(255, 143, 177, 0.2);
+            box-shadow: 0 4px 20px rgba(255, 143, 177, 0.12);
+        }
+
+        .grade-card.active:hover {
+            box-shadow: 0 8px 30px rgba(255, 143, 177, 0.2);
+        }
+
+        .grade-card.disabled {
+            background: #f5f5f5;
+            border: 2px solid #e8e8e8;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .grade-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .grade-card.active .grade-badge {
+            background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
+            color: white;
+        }
+
+        .grade-card.disabled .grade-badge {
+            background: #ddd;
+            color: #999;
+        }
+
+        .grade-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .grade-label {
+            font-size: 19px;
+            font-weight: 700;
+            color: #333;
+            display: block;
+        }
+
+        .grade-card.disabled .grade-label {
+            color: #aaa;
+        }
+
+        .grade-desc {
+            font-size: 13px;
+            color: #888;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .grade-card.disabled .grade-desc {
+            color: #c0c0c0;
+        }
+
+        .grade-arrow {
+            font-size: 20px;
+            color: #ccc;
+            flex-shrink: 0;
+        }
+
+        .grade-card.disabled .grade-arrow {
+            color: #ddd;
+        }
+
+        .coming-badge {
+            display: inline-block;
+            background: #e0e0e0;
+            color: #888;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            .header-card {
+                padding: 32px 20px;
+            }
+
+            .header-card h1 {
+                font-size: 23px;
+            }
+
+            .grade-card {
+                padding: 18px 20px;
+            }
+
+            .grade-badge {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+                border-radius: 14px;
+            }
+
+            .grade-label {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-card">
+        <span class="icon">📋</span>
+        <h1>선택과목 조사</h1>
+        <p>해당 학년을 선택하여<br>과목 선택을 진행해 주세요</p>
+    </div>
+
+    <div class="grade-cards">
+        <a href="grade1.html" class="grade-card active">
+            <div class="grade-badge">1</div>
+            <div class="grade-info">
+                <span class="grade-label">1학년</span>
+                <span class="grade-desc">1차 선택과목 조사</span>
+            </div>
+            <span class="grade-arrow">→</span>
+        </a>
+
+        <div class="grade-card disabled">
+            <div class="grade-badge">2</div>
+            <div class="grade-info">
+                <span class="grade-label">2학년</span>
+                <span class="grade-desc">1차 선택과목 조사</span>
+            </div>
+            <span class="coming-badge">준비 중</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        이 페이지는 과목 선택 조사를 위해 제작되었습니다
+    </div>
+</div>
+
+</body>
+</html>
