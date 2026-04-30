@@ -471,18 +471,18 @@
                 </div>
             </div>
             <div class="question-card">
+                <div class="question-title">예술 과목 [택 1]</div>
+                <div class="option-group" data-group="sem1-art">
+                    <label class="option-item"><input type="radio" name="art1" value="미술창작"><span>미술창작</span></label>
+                    <label class="option-item"><input type="radio" name="art1" value="음악 연주와 창작"><span>음악 연주와 창작</span></label>
+                </div>                
+            </div>
+            <div class="question-card">
                 <div class="question-title">정보/교양 [택 1]</div>
                 <div class="option-group" data-group="sem1-info">
                     <label class="option-item"><input type="radio" name="info1" value="인공지능기초"><span>인공지능기초</span></label>
                     <label class="option-item"><input type="radio" name="info1" value="시사 토론 및 비평 실습"><span>시사 토론 및 비평 실습</span></label>
                     <label class="option-item"><input type="radio" name="info1" value="이음영어"><span>이음영어</span></label>
-                </div>
-            </div>
-            <div class="question-card">
-                <div class="question-title">예술 과목 [택 1]</div>
-                <div class="option-group" data-group="sem1-art">
-                    <label class="option-item"><input type="radio" name="art1" value="미술창작"><span>미술창작</span></label>
-                    <label class="option-item"><input type="radio" name="art1" value="음악 연주와 창작"><span>음악 연주와 창작</span></label>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -513,6 +513,21 @@
                 <div class="option-group" data-group="sem2-tamgu2">
                     <label class="option-item"><input type="radio" name="study2" value="사회문화 탐구"><span>사회문화 탐구</span></label>
                     <label class="option-item"><input type="radio" name="study2" value="융합과학 탐구"><span>융합과학 탐구</span></label>
+                </div>
+            </div>
+            <div class="question-card">
+                <div class="question-title">예술 [택 1]</div>
+                <div class="option-group" data-group="sem2-art">
+                    <label class="option-item"><input type="radio" name="art2" value="미술 감상과 비평"><span>미술 감상과 비평</span></label>
+                    <label class="option-item"><input type="radio" name="art2" value="음악 감상과 비평"><span>음악 감상과 비평</span></label>
+                </div>
+            </div>
+            <div class="question-card">
+                <div class="question-title">정보/교양 [택 1]</div>
+                <div class="option-group" data-group="sem2-info">
+                    <label class="option-item"><input type="radio" name="info2" value="소프트웨어와 생활"><span>소프트웨어와 생활</span></label>
+                    <label class="option-item"><input type="radio" name="info2" value="생활과 수학"><span>생활과 수학</span></label>
+                    <label class="option-item"><input type="radio" name="info2" value="실천하는 세계 시민"><span>실천하는 세계 시민</span></label>
                 </div>
             </div>
             <div class="nav-buttons">
@@ -580,7 +595,9 @@
         if (step === 3) {
             const tamgu1 = document.querySelectorAll('[data-group="sem2-tamgu1"] input:checked');
             const tamgu2 = document.querySelector('input[name="study2"]:checked');
-            return tamgu1.length === 2 && tamgu2 !== null;
+            const art = document.querySelector('input[name="art2"]:checked');
+            const info = document.querySelector('input[name="info2"]:checked');
+            return tamgu1.length === 2 && tamgu2 !== null && art !== null && info !== null;
         }
         return false;
     }
@@ -661,6 +678,8 @@
         const sem2Tamgu1 = Array.from(document.querySelectorAll('[data-group="sem2-tamgu1"] input:checked'))
             .map(el => el.value);
         const sem2Tamgu2 = document.querySelector('input[name="study2"]:checked')?.value || '';
+        const sem2Art = document.querySelector('input[name="art2"]:checked')?.value || '';
+        const sem2Info = document.querySelector('input[name="info2"]:checked')?.value || '';
 
         const summary = [
             '🌸 [제출 내용 확인]',
@@ -676,6 +695,8 @@
             '📅 2학년 2학기',
             '  탐구1: ' + sem2Tamgu1.join(', '),
             '  탐구2: ' + sem2Tamgu2,
+            '  예술: ' + sem2Art,
+            '  정보/교양: ' + sem2Info,
             '',
             '제출하시겠습니까?',
         ].join('\n');
@@ -692,7 +713,9 @@
                     sem1Info: sem1Info,
                     sem1Art: sem1Art,
                     sem2Tamgu1: sem2Tamgu1,
-                    sem2Tamgu2: sem2Tamgu2
+                    sem2Tamgu2: sem2Tamgu2,
+                    sem2Art: sem2Art,
+                    sem2Info: sem2Info
                 })
             });
             alert('✅ 제출이 완료되었습니다!');
