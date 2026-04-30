@@ -230,6 +230,31 @@
             color: var(--accent-pink);
         }
 
+        .option-item.locked {
+            background-color: #f5f5f5;
+            border-color: #eee;
+            cursor: not-allowed;
+            opacity: 0.55;
+            position: relative;
+        }
+
+        .option-item.locked:active {
+            background-color: #f5f5f5;
+            border-color: #eee;
+        }
+
+        .option-item.locked span {
+            color: #bbb;
+        }
+
+        .option-item.locked .lock-tag {
+            font-size: 11px;
+            color: #c0c0c0;
+            margin-left: auto;
+            flex-shrink: 0;
+            padding-left: 8px;
+        }
+
         /* 섹션 구분 */
         .section-divider {
             color: var(--accent-pink);
@@ -459,14 +484,14 @@
                 <div class="question-title">탐구 과목 1 [택 2]</div>
                 <span class="notice-red">! 1학기에 선택한 과목은 중복 선택이 불가합니다</span>
                 <div class="option-group" data-group="sem2-tamgu1">
-                    <label class="option-item"><input type="checkbox" value="사회와 문화"><span>사회와 문화</span></label>
-                    <label class="option-item"><input type="checkbox" value="동아시아 역사 기행"><span>동아시아 역사 기행</span></label>
-                    <label class="option-item"><input type="checkbox" value="윤리와 사상"><span>윤리와 사상</span></label>
-                    <label class="option-item"><input type="checkbox" value="한국지리 탐구"><span>한국지리 탐구</span></label>
-                    <label class="option-item"><input type="checkbox" value="물리학"><span>물리학</span></label>
-                    <label class="option-item"><input type="checkbox" value="화학"><span>화학</span></label>
-                    <label class="option-item"><input type="checkbox" value="생명과학"><span>생명과학</span></label>
-                    <label class="option-item"><input type="checkbox" value="지구과학"><span>지구과학</span></label>
+                    <label class="option-item"><input type="checkbox" value="사회와 문화"><span>사회와 문화</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="동아시아 역사 기행"><span>동아시아 역사 기행</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="윤리와 사상"><span>윤리와 사상</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="한국지리 탐구"><span>한국지리 탐구</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="물리학"><span>물리학</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="화학"><span>화학</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="생명과학"><span>생명과학</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="지구과학"><span>지구과학</span><span class="lock-tag">이미 선택</span></label>
                 </div>
             </div>
             <div class="question-card">
@@ -517,6 +542,10 @@
             const l = i + 1;
             line.classList.toggle('done', l < step);
         });
+
+        if (step === 3) {
+            syncRestrictions();
+        }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
         updateButtons();
@@ -579,6 +608,30 @@
         toast._timeout = setTimeout(() => toast.classList.remove('show'), 1500);
     }
 
+    // 1학기 선택 과목을 2학기에서 차단
+    function syncRestrictions() {
+        const sem1Selected = new Set(
+            Array.from(document.querySelectorAll('[data-group="sem1-tamgu"] input:checked'))
+                .map(el => el.value)
+        );
+
+        document.querySelectorAll('[data-group="sem2-tamgu1"] .option-item').forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            if (!checkbox) return;
+
+            if (sem1Selected.has(checkbox.value)) {
+                item.classList.add('locked');
+                checkbox.disabled = true;
+                checkbox.checked = false;
+            } else {
+                item.classList.remove('locked');
+                checkbox.disabled = false;
+            }
+        });
+
+        updateButtons();
+    }
+
     function handleSubmit() {
         if (!validateStep(3)) return;
 
@@ -623,6 +676,9 @@
     // 체크박스 최대 2개 제한 적용
     setupMaxSelect('[data-group="sem1-tamgu"]', 2);
     setupMaxSelect('[data-group="sem2-tamgu1"]', 2);
+
+    // 1학기 탐구 선택 변경 시 2학기 옵션 동기화
+    document.querySelector('[data-group="sem1-tamgu"]').addEventListener('change', syncRestrictions);
 
     // 라디오 버튼 변경 감지
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
