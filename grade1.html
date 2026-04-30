@@ -670,8 +670,20 @@
         ].join('\n');
 
         if (confirm(summary)) {
+            fetch('https://script.google.com/macros/s/AKfycbwI-iThQ46PdUCXD1ia_BwTh3wAQ1EQYj9txvm9IEQ9wTiKUYe9IVhDVCNBkef3F9B6/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify({
+                    name: name,
+                    studentId: studentId,
+                    sem1Tamgu: sem1Tamgu,
+                    sem1Art: sem1Art,
+                    sem2Tamgu1: sem2Tamgu1,
+                    sem2Tamgu2: sem2Tamgu2
+                })
+            });
             alert('✅ 제출이 완료되었습니다!');
-            // 실제 제출 로직이 필요하면 여기에 추가
         }
     }
 
