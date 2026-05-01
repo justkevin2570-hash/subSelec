@@ -534,7 +534,7 @@
         if (step === 1) {
             const name = document.getElementById('name').value.trim();
             const sid = document.getElementById('studentId').value.trim();
-            return name !== '' && sid !== '';
+            return name !== '' && sid.length === 4;
         }
         if (step === 2) {
             const gys = document.querySelectorAll('[data-group="sem1-gys"] input:checked');
