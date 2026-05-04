@@ -33,8 +33,7 @@ function doPost(e) {
       ss.getSheetByName('1학년 소감문').appendRow([
         data.name,
         data.studentId,
-        combinedReview,
-        timestamp
+        combinedReview
       ]);
     }
   } else if (grade === 3) {
@@ -58,8 +57,7 @@ function doPost(e) {
       ss.getSheetByName('2학년 소감문').appendRow([
         data.name,
         data.studentId,
-        combinedReview,
-        timestamp
+        combinedReview
       ]);
     }
   }
