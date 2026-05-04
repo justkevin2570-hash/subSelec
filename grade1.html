@@ -529,6 +529,20 @@
                     <label class="option-item"><input type="radio" name="info2" value="실천하는 세계 시민"><span>실천하는 세계 시민</span></label>
                 </div>
             </div>
+            <div class="section-divider">📋 추가 조사 (선택사항)</div>
+            <div class="question-card">
+                <div class="question-title">공동교육과정</div>
+                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">고흥고에 없는 교육과정 중 수강하고 싶은 과목이 있으면 적으시오.</p>
+                <input type="text" id="jointCourse" placeholder="예: 프로그래밍, 심리학, 일본어 등" maxlength="100">
+            </div>
+            <div class="question-card">
+                <div class="question-title">우주 관련 추가교육과정 참여 의사</div>
+                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">우주 관련 추가 교육과정에 참여할 의사가 있으십니까?</p>
+                <div class="option-group" data-group="space-edu">
+                    <label class="option-item"><input type="radio" name="spaceEdu" value="예"><span>예</span></label>
+                    <label class="option-item"><input type="radio" name="spaceEdu" value="아니오"><span>아니오</span></label>
+                </div>
+            </div>
             <div class="nav-buttons">
                 <button type="button" class="btn-prev" onclick="goToStep(2)">← 이전</button>
                 <button type="button" class="btn-submit" id="btnSubmit" disabled onclick="handleSubmit()">선택 완료 및 제출하기</button>
@@ -669,6 +683,9 @@
         const name = document.getElementById('name').value.trim();
         const studentId = document.getElementById('studentId').value.trim();
 
+        const jointCourse = document.getElementById('jointCourse').value.trim();
+        const spaceEdu = document.querySelector('input[name="spaceEdu"]:checked')?.value || '';
+
         const sem1Tamgu = Array.from(document.querySelectorAll('[data-group="sem1-tamgu"] input:checked'))
             .map(el => el.value);
         const sem1Info = document.querySelector('input[name="info1"]:checked')?.value || '';
@@ -697,6 +714,10 @@
             '  예술: ' + sem2Art,
             '  정보/교양: ' + sem2Info,
             '',
+            '📋 추가 조사',
+            '  공동교육과정: ' + (jointCourse || '없음'),
+            '  우주 추가교육과정: ' + (spaceEdu || '미응답'),
+            '',
             '제출하시겠습니까?',
         ].join('\n');
 
@@ -715,7 +736,9 @@
                     sem2Tamgu1: sem2Tamgu1,
                     sem2Tamgu2: sem2Tamgu2,
                     sem2Art: sem2Art,
-                    sem2Info: sem2Info
+                    sem2Info: sem2Info,
+                    jointCourse: jointCourse,
+                    spaceEdu: spaceEdu
                 })
             });
             alert('선택과목을 바꾸고 싶으면 새로 작성하면 됩니다. 이전 내용은 삭제 처리됩니다.\n\n1차 조사는 5월 29일(금)까지만 받고, 그 이후에는 2차 조사 때 다시 받겠습니다.(9~10월 예정)');
