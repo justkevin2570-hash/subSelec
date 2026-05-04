@@ -6,10 +6,7 @@ function doPost(e) {
 
   var grade = data.grade;
 
-  // 선택 이유 + 소감문 병합 (내용만)
-  var combinedReview = [data.selectionReason, data.fairReview]
-    .filter(function(v) { return v; })
-    .join('\n\n');
+  var combinedReview = data.selectionReason || '';
 
   if (grade === 2) {
     // 1학년 → "1학년" 시트

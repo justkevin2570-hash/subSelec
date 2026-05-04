@@ -443,7 +443,7 @@
         <div class="step-line" data-line="4"></div>
         <div class="step-item" data-step="5">
             <div class="step-circle">5</div>
-            <span class="step-label">소감 작성</span>
+            <span class="step-label">이유 작성</span>
         </div>
     </div>
 
@@ -551,7 +551,7 @@
             <div class="question-card">
                 <div class="question-title">공동교육과정</div>
                 <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">고흥고에 없는 교육과정 중 수강하고 싶은 과목이 있으면 적으시오.</p>
-                <input type="text" id="jointCourse" placeholder="예: 프로그래밍, 심리학, 일본어 등" maxlength="100">
+                <input type="text" id="jointCourse" maxlength="100">
             </div>
             <div class="question-card">
                 <div class="question-title">우주 관련 추가교육과정 참여 의사</div>
@@ -567,18 +567,13 @@
             </div>
         </div>
 
-        <!-- 5단계: 선택 이유 및 소감 -->
+        <!-- 5단계: 선택 이유 -->
         <div class="step-content" id="step5">
-            <div class="section-divider">📝 선택 이유 및 소감 (선택사항)</div>
+            <div class="section-divider">📝 선택 이유 (선택사항)</div>
             <div class="question-card">
                 <div class="question-title">선택한 과목을 고른 이유</div>
                 <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">이번에 선택한 과목들을 고른 이유를 자유롭게 적어주세요.</p>
-                <textarea id="selectionReason" placeholder="선택 이유를 입력해 주세요" rows="4" style="width: 100%; border: 2px solid #f0f0f0; border-radius: 12px; padding: 14px 16px; font-size: 16px; outline: none; box-sizing: border-box; font-family: 'Pretendard', sans-serif; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary-pink)'; this.style.backgroundColor='var(--bg-color)';" onblur="this.style.borderColor='#f0f0f0'; this.style.backgroundColor='';"></textarea>
-            </div>
-            <div class="question-card">
-                <div class="question-title">교육과정 박람회 소감문</div>
-                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">교육과정 박람회에 참여한 소감을 자유롭게 적어주세요.</p>
-                <textarea id="fairReview" placeholder="소감을 입력해 주세요" rows="4" style="width: 100%; border: 2px solid #f0f0f0; border-radius: 12px; padding: 14px 16px; font-size: 16px; outline: none; box-sizing: border-box; font-family: 'Pretendard', sans-serif; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary-pink)'; this.style.backgroundColor='var(--bg-color)';" onblur="this.style.borderColor='#f0f0f0'; this.style.backgroundColor='';"></textarea>
+                <textarea id="selectionReason" placeholder="정성껏 잘 쓴 학생 10명 상품 증정합니다." rows="4" style="width: 100%; border: 2px solid #f0f0f0; border-radius: 12px; padding: 14px 16px; font-size: 16px; outline: none; box-sizing: border-box; font-family: 'Pretendard', sans-serif; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary-pink)'; this.style.backgroundColor='var(--bg-color)';" onblur="this.style.borderColor='#f0f0f0'; this.style.backgroundColor='';"></textarea>
             </div>
             <div class="nav-buttons">
                 <button type="button" class="btn-prev" onclick="goToStep(4)">← 이전</button>
@@ -735,7 +730,6 @@
         const jointCourse = document.getElementById('jointCourse').value.trim();
         const spaceEdu = document.querySelector('input[name="spaceEdu"]:checked')?.value || '';
         const selectionReason = document.getElementById('selectionReason').value.trim();
-        const fairReview = document.getElementById('fairReview').value.trim();
 
         const sem1Tamgu = Array.from(document.querySelectorAll('[data-group="sem1-tamgu"] input:checked'))
             .map(el => el.value);
@@ -769,9 +763,8 @@
             '  공동교육과정: ' + (jointCourse || '없음'),
             '  우주 추가교육과정: ' + (spaceEdu || '미응답'),
             '',
-            '📝 선택 이유 및 소감',
+            '📝 선택 이유',
             '  선택 이유: ' + (selectionReason || '없음'),
-            '  박람회 소감: ' + (fairReview || '없음'),
             '',
             '제출하시겠습니까?',
         ].join('\n');
@@ -794,8 +787,7 @@
                     sem2Info: sem2Info,
                     jointCourse: jointCourse,
                     spaceEdu: spaceEdu,
-                    selectionReason: selectionReason,
-                    fairReview: fairReview
+                    selectionReason: selectionReason
                 })
             });
             alert('선택과목을 바꾸고 싶으면 새로 작성하면 됩니다. 이전 내용은 삭제 처리됩니다.\n\n1차 조사는 5월 29일(금)까지만 받고, 그 이후에는 2차 조사 때 다시 받겠습니다.(9~10월 예정)');
