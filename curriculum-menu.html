@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>선택과목 조사</title>
+    <title>교육과정 조회</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,6 +38,21 @@
             max-width: 500px;
         }
 
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-pink);
+        }
+
         .header-card {
             background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
             border-radius: 24px;
@@ -67,13 +82,13 @@
             line-height: 1.5;
         }
 
-        .grade-cards {
+        .menu-cards {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .grade-card {
+        .menu-card {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -82,98 +97,70 @@
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .grade-card:active {
-            transform: scale(0.98);
-        }
-
-        .grade-card.active {
             background: white;
             border: 2px solid rgba(255, 143, 177, 0.2);
             box-shadow: 0 4px 20px rgba(255, 143, 177, 0.12);
         }
 
-        .grade-card.active:hover {
+        .menu-card:hover {
+            transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(255, 143, 177, 0.2);
         }
 
-        .grade-card.disabled {
-            background: #f5f5f5;
-            border: 2px solid #e8e8e8;
-            cursor: not-allowed;
-            pointer-events: none;
+        .menu-card:active {
+            transform: scale(0.98);
         }
 
-        .grade-badge {
+        .menu-card.purple {
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            box-shadow: 0 4px 20px rgba(167, 139, 250, 0.12);
+        }
+
+        .menu-card.purple:hover {
+            box-shadow: 0 8px 30px rgba(167, 139, 250, 0.25);
+        }
+
+        .menu-badge {
             width: 56px;
             height: 56px;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             flex-shrink: 0;
-        }
-
-        .grade-card.active .grade-badge {
             background: linear-gradient(135deg, var(--primary-pink), var(--accent-pink));
             color: white;
         }
 
-        .grade-card.disabled .grade-badge {
-            background: #ddd;
-            color: #999;
+        .menu-card.purple .menu-badge {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
         }
 
-        .grade-info {
+        .menu-info {
             flex: 1;
             min-width: 0;
         }
 
-        .grade-label {
+        .menu-label {
             font-size: 19px;
             font-weight: 700;
             color: #333;
             display: block;
         }
 
-        .grade-card.disabled .grade-label {
-            color: #aaa;
-        }
-
-        .grade-desc {
+        .menu-desc {
             font-size: 13px;
             color: #888;
             margin-top: 2px;
             display: block;
         }
 
-        .grade-card.disabled .grade-desc {
-            color: #c0c0c0;
-        }
-
-        .grade-arrow {
+        .menu-arrow {
             font-size: 20px;
             color: #ccc;
             flex-shrink: 0;
-        }
-
-        .grade-card.disabled .grade-arrow {
-            color: #ddd;
-        }
-
-        .coming-badge {
-            display: inline-block;
-            background: #e0e0e0;
-            color: #888;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-top: 4px;
         }
 
         .footer {
@@ -196,18 +183,18 @@
                 font-size: 23px;
             }
 
-            .grade-card {
+            .menu-card {
                 padding: 18px 20px;
             }
 
-            .grade-badge {
+            .menu-badge {
                 width: 48px;
                 height: 48px;
-                font-size: 22px;
+                font-size: 20px;
                 border-radius: 14px;
             }
 
-            .grade-label {
+            .menu-label {
                 font-size: 17px;
             }
         }
@@ -216,38 +203,31 @@
 <body>
 
 <div class="container">
+    <a href="index.html" class="back-btn">← 돌아가기</a>
+
     <div class="header-card">
-        <span class="icon">📋</span>
-        <h1>선택과목 조사(1차)</h1>
-        <p>해당 학년을 선택하여<br>과목 선택을 진행해 주세요</p>
+        <span class="icon">📚</span>
+        <h1>교육과정 조회</h1>
+        <p>확인하실 학년도를 선택해 주세요</p>
     </div>
 
-    <div class="grade-cards">
-        <a href="grade1.html" class="grade-card active">
-            <div class="grade-badge">1</div>
-            <div class="grade-info">
-                <span class="grade-label">1학년은 여기</span>
-                <span class="grade-desc">2학년 선택과목 조사</span>
+    <div class="menu-cards">
+        <a href="2025curriculum.html" class="menu-card">
+            <div class="menu-badge">2025</div>
+            <div class="menu-info">
+                <span class="menu-label">2025학년도 3개년</span>
+                <span class="menu-desc">2025학년도 교육과정 편제표 보기</span>
             </div>
-            <span class="grade-arrow">→</span>
+            <span class="menu-arrow">→</span>
         </a>
 
-        <a href="grade2.html" class="grade-card active">
-            <div class="grade-badge">2</div>
-            <div class="grade-info">
-                <span class="grade-label">2학년은 여기</span>
-                <span class="grade-desc">3학년 선택과목 조사</span>
+        <a href="curriculum.html" class="menu-card purple">
+            <div class="menu-badge">2026</div>
+            <div class="menu-info">
+                <span class="menu-label">2026학년도 3개년</span>
+                <span class="menu-desc">2026학년도 교육과정 편제표 보기</span>
             </div>
-            <span class="grade-arrow">→</span>
-        </a>
-
-        <a href="curriculum-menu.html" class="grade-card active">
-            <div class="grade-badge">📚</div>
-            <div class="grade-info">
-                <span class="grade-label">교육과정</span>
-                <span class="grade-desc">학년별 교육과정 조회</span>
-            </div>
-            <span class="grade-arrow">→</span>
+            <span class="menu-arrow">→</span>
         </a>
     </div>
 
