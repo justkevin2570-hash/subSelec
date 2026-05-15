@@ -15,7 +15,7 @@
       color: #333;
     }
     .container {
-      max-width: 1500px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     h1 {
@@ -30,12 +30,21 @@
       margin-bottom: 30px;
       font-size: 15px;
     }
+    .table-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 30px 0 12px;
+      color: #2c3e50;
+      padding-left: 8px;
+      border-left: 4px solid #7cb342;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       background: #fff;
       font-size: 12.5px;
       table-layout: fixed;
+      margin-bottom: 20px;
     }
     th, td {
       border: 1px solid #b8c5d6;
@@ -68,11 +77,6 @@
       text-align: left;
       padding-left: 10px;
     }
-    .type-cell {
-      font-size: 11px;
-      color: #555;
-    }
-    /* 색상 구분 */
     .color-korean { background: #fff8e7; }
     .color-math   { background: #e8f5e9; }
     .color-english{ background: #e3f2fd; }
@@ -99,12 +103,10 @@
       font-weight: 600;
     }
     .col-narrow { width: 40px; }
-    .col-subject { width: 18%; }
-    .col-type { width: 50px; }
-    .col-credit { width: 50px; }
-    .col-sem { width: 50px; }
-    .col-total { width: 55px; }
-    @media (max-width: 1100px) {
+    .col-subject { width: 25%; }
+    .col-type { width: 55px; }
+    .col-sem { width: 55px; }
+    @media (max-width: 900px) {
       table { font-size: 11px; }
       th, td { padding: 4px 5px; }
       .col-subject { width: auto; }
@@ -115,42 +117,34 @@
 <div class="container">
   <h1>2025학년도 교육과정 편제표 관리</h1>
   <p class="subtitle">학교 지정 및 학생 선택 과목 이수 현황</p>
+
+  <div class="table-title">학교 지정 (2학년)</div>
   <table>
     <thead>
       <tr>
-        <th rowspan="2" class="col-narrow">구분</th>
-        <th rowspan="2" class="col-type">교과(군)</th>
-        <th rowspan="2" class="col-subject">세부과목</th>
-        <th rowspan="2" class="col-credit">기준<br>학점</th>
-        <th rowspan="2" class="col-credit">운영<br>학점</th>
+        <th class="col-narrow">구분</th>
+        <th class="col-type">교과(군)</th>
+        <th class="col-subject">세부과목</th>
         <th colspan="2">2학년</th>
         <th colspan="2">3학년</th>
-        <th rowspan="2" class="col-total">총<br>이수<br>학점</th>
-        <th rowspan="2" class="col-total">필수<br>이수<br>학점</th>
       </tr>
       <tr>
-        <th class="col-sem">1학기</th><th class="col-sem">2학기</th><th class="col-sem">1학기</th><th class="col-sem">2학기</th>
+        <th class="col-sem">1학기</th><th class="col-sem">2학기</th>
+        <th class="col-sem">1학기</th><th class="col-sem">2학기</th>
       </tr>
     </thead>
     <tbody>
-      <!-- ===== 학교 지정 (2학년) ===== -->
       <tr>
         <td rowspan="22" class="section-header">학교<br>지정<br>(2학년)</td>
         <td rowspan="4" class="category-cell color-korean">국어</td>
         <td class="subject-cell color-korean">공통국어1/공통국어2</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">4</td>
         <td class="color-korean"></td>
         <td class="color-korean"></td>
         <td class="color-korean"></td>
         <td class="color-korean"></td>
-        <td rowspan="4" class="category-cell">20</td>
-        <td rowspan="4" class="category-cell">8</td>
       </tr>
       <tr>
         <td class="subject-cell color-korean">문학/독서와 작문</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">4</td>
         <td class="color-korean">4</td>
         <td class="color-korean">4</td>
         <td class="color-korean"></td>
@@ -158,8 +152,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-korean">화법과 언어</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">4</td>
         <td class="color-korean"></td>
         <td class="color-korean"></td>
         <td class="color-korean">4</td>
@@ -167,8 +159,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-korean">매체 언어</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">4</td>
         <td class="color-korean"></td>
         <td class="color-korean"></td>
         <td class="color-korean">4</td>
@@ -177,19 +167,13 @@
       <tr>
         <td rowspan="4" class="category-cell color-math">수학</td>
         <td class="subject-cell color-math">공통수학1/공통수학2</td>
-        <td class="color-math">4</td>
-        <td class="color-math">4</td>
         <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math"></td>
-        <td rowspan="4" class="category-cell">20</td>
-        <td rowspan="4" class="category-cell">8</td>
       </tr>
       <tr>
         <td class="subject-cell color-math">대수/미적분 I</td>
-        <td class="color-math">4</td>
-        <td class="color-math">4</td>
         <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">4</td>
@@ -197,8 +181,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-math">확률과 통계</td>
-        <td class="color-math">4</td>
-        <td class="color-math">4</td>
         <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">4</td>
@@ -206,8 +188,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-math">기하</td>
-        <td class="color-math">4</td>
-        <td class="color-math">4</td>
         <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">4</td>
@@ -216,19 +196,13 @@
       <tr>
         <td rowspan="4" class="category-cell color-english">영어</td>
         <td class="subject-cell color-english">공통영어1/공통영어2</td>
-        <td class="color-english">4</td>
-        <td class="color-english">4</td>
         <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english"></td>
-        <td rowspan="4" class="category-cell">19</td>
-        <td rowspan="4" class="category-cell">8</td>
       </tr>
       <tr>
         <td class="subject-cell color-english">영어 I/영어 II</td>
-        <td class="color-english">4</td>
-        <td class="color-english">4</td>
         <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english">4</td>
@@ -236,8 +210,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-english">영어 독해와 작문</td>
-        <td class="color-english">4</td>
-        <td class="color-english">4</td>
         <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english">4</td>
@@ -245,8 +217,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-english">영어 회화</td>
-        <td class="color-english">4</td>
-        <td class="color-english">4</td>
         <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english">4</td>
@@ -255,19 +225,13 @@
       <tr>
         <td rowspan="4" class="category-cell color-social">사회</td>
         <td class="subject-cell color-social">한국사1/한국사2</td>
-        <td class="color-social">4</td>
-        <td class="color-social">4</td>
         <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social"></td>
-        <td rowspan="4" class="category-cell">10</td>
-        <td rowspan="4" class="category-cell">8</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">통합사회1/통합사회2</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
         <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social"></td>
@@ -275,8 +239,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-social">통합과학1/통합과학2</td>
-        <td class="color-social">3</td>
-        <td class="color-social">4</td>
         <td class="color-social">1</td>
         <td class="color-social"></td>
         <td class="color-social"></td>
@@ -284,8 +246,6 @@
       </tr>
       <tr>
         <td class="subject-cell color-social">동아시아 역사 기행</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
         <td class="color-social"></td>
@@ -294,19 +254,13 @@
       <tr>
         <td rowspan="2" class="category-cell color-science">과학</td>
         <td class="subject-cell color-science">과학탐구실험1/과학탐구실험2</td>
-        <td class="color-science">4</td>
-        <td class="color-science">2</td>
         <td class="color-science">1</td>
         <td class="color-science">1</td>
         <td class="color-science">2</td>
         <td class="color-science">2</td>
-        <td rowspan="2" class="category-cell">10</td>
-        <td rowspan="2" class="category-cell">10</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">융합과학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
         <td class="color-science"></td>
@@ -315,20 +269,14 @@
       <tr>
         <td class="category-cell color-art">예술</td>
         <td class="subject-cell color-art">체육1/체육2</td>
-        <td class="color-art">3</td>
-        <td class="color-art">2</td>
         <td class="color-art"></td>
         <td class="color-art"></td>
         <td class="color-art"></td>
         <td class="color-art"></td>
-        <td rowspan="2" class="category-cell">4</td>
-        <td rowspan="2" class="category-cell">10</td>
       </tr>
       <tr>
         <td class="category-cell color-tech">기술가정<br>/정보</td>
         <td class="subject-cell color-tech">정보</td>
-        <td class="color-tech">3</td>
-        <td class="color-tech">3</td>
         <td class="color-tech"></td>
         <td class="color-tech"></td>
         <td class="color-tech"></td>
@@ -337,338 +285,221 @@
       <tr>
         <td class="category-cell color-civic">교양</td>
         <td class="subject-cell color-civic">진로와 직업</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">3</td>
         <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic"></td>
-        <td class="category-cell">4</td>
-        <td class="category-cell">16</td>
       </tr>
       <tr>
         <td class="category-cell color-civic">교양</td>
         <td class="subject-cell color-civic">보건</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
         <td class="color-civic">2</td>
         <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic"></td>
-        <td class="category-cell">2</td>
-        <td class="category-cell">4</td>
       </tr>
-      <!-- 소계 -->
       <tr class="total-row">
-        <td colspan="3">소계</td>
+        <td colspan="2">소계</td>
         <td>17</td>
         <td>14</td>
         <td>9</td>
         <td>2</td>
-        <td>100</td>
-        <td>84</td>
       </tr>
-      <!-- ===== 학생 선택 (2학년) ===== -->
+    </tbody>
+  </table>
+
+  <div class="table-title">학생 선택 (2학년)</div>
+  <table>
+    <thead>
+      <tr>
+        <th class="col-narrow">구분</th>
+        <th class="col-type">교과(군)</th>
+        <th class="col-subject">세부과목</th>
+        <th class="col-sem">1학기</th>
+        <th class="col-sem">2학기</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td rowspan="25" class="section-header">학생<br>선택<br>(2학년)</td>
         <td rowspan="4" class="category-cell color-social">사회</td>
         <td class="subject-cell color-social">사회와 문화</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
-        <td rowspan="4" class="category-cell"><span class="tag">[택2]</span><br>6</td>
-        <td rowspan="25" class="category-cell">74</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">동아시아 역사 기행</td>
-        <td class="color-social">4</td>
         <td class="color-social">3</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td class="subject-cell color-social">윤리와 사상</td>
-        <td class="color-social">4</td>
         <td class="color-social">3</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td class="subject-cell color-social">한국사의 탐구</td>
-        <td class="color-social">4</td>
         <td class="color-social">3</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td rowspan="4" class="category-cell color-science">과학</td>
         <td class="subject-cell color-science">물리학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
-        <td rowspan="4" class="category-cell"><span class="tag">[택3]</span><br>9</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">화학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
       </tr>
       <tr>
         <td class="subject-cell color-science">생명과학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
       </tr>
       <tr>
         <td class="subject-cell color-science">지구과학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
       </tr>
       <tr>
         <td rowspan="2" class="category-cell color-social">사회<br>융합</td>
         <td class="subject-cell color-social">사회문제 탐구</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">융합과학 탐구</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
       </tr>
       <tr>
         <td rowspan="2" class="category-cell color-art">예술</td>
         <td class="subject-cell color-art">미술 감상과 비평</td>
-        <td class="color-art">3</td>
-        <td class="color-art">3</td>
         <td class="color-art"></td>
         <td class="color-art">3</td>
-        <td class="color-art"></td>
-        <td class="color-art"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="subject-cell color-art">음악 감상과 비평</td>
-        <td class="color-art">3</td>
-        <td class="color-art">3</td>
         <td class="color-art"></td>
         <td class="color-art">3</td>
-        <td class="color-art"></td>
-        <td class="color-art"></td>
       </tr>
       <tr>
         <td rowspan="2" class="category-cell color-art">예술</td>
         <td class="subject-cell color-art">미술 창작</td>
-        <td class="color-art">3</td>
-        <td class="color-art">3</td>
         <td class="color-art"></td>
         <td class="color-art">3</td>
-        <td class="color-art"></td>
-        <td class="color-art"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="subject-cell color-art">음악 연주와 창작</td>
-        <td class="color-art">3</td>
-        <td class="color-art">3</td>
         <td class="color-art"></td>
         <td class="color-art">3</td>
-        <td class="color-art"></td>
-        <td class="color-art"></td>
       </tr>
       <tr>
         <td class="category-cell color-tech">기술가정<br>/정보</td>
         <td class="subject-cell color-tech">인공지능 기초</td>
-        <td class="color-tech">4</td>
-        <td class="color-tech">3</td>
         <td class="color-tech"></td>
         <td class="color-tech">3</td>
-        <td class="color-tech"></td>
-        <td class="color-tech"></td>
-        <td class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td rowspan="2" class="category-cell color-lang">제2외국어<br>/한문</td>
         <td class="subject-cell color-lang">중국어</td>
-        <td class="color-lang">4</td>
-        <td class="color-lang">3</td>
         <td class="color-lang"></td>
         <td class="color-lang">3</td>
-        <td class="color-lang"></td>
-        <td class="color-lang"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="subject-cell color-lang">일본어</td>
-        <td class="color-lang">4</td>
-        <td class="color-lang">3</td>
         <td class="color-lang"></td>
         <td class="color-lang">3</td>
-        <td class="color-lang"></td>
-        <td class="color-lang"></td>
       </tr>
       <tr>
         <td class="category-cell color-tech">기술가정<br>/정보</td>
         <td class="subject-cell color-tech">소프트웨어와 생활</td>
-        <td class="color-tech">4</td>
-        <td class="color-tech">3</td>
         <td class="color-tech"></td>
         <td class="color-tech">3</td>
-        <td class="color-tech"></td>
-        <td class="color-tech"></td>
-        <td class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td rowspan="2" class="category-cell color-lang">제2외국어<br>/한문</td>
         <td class="subject-cell color-lang">중국 문화</td>
-        <td class="color-lang">4</td>
-        <td class="color-lang">3</td>
         <td class="color-lang"></td>
         <td class="color-lang">3</td>
-        <td class="color-lang"></td>
-        <td class="color-lang"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="subject-cell color-lang">일본 문화</td>
-        <td class="color-lang">4</td>
-        <td class="color-lang">3</td>
         <td class="color-lang"></td>
         <td class="color-lang">3</td>
-        <td class="color-lang"></td>
-        <td class="color-lang"></td>
       </tr>
-      <!-- ===== 학생 선택 (3학년) ===== -->
+    </tbody>
+  </table>
+
+  <div class="table-title">학생 선택 (3학년)</div>
+  <table>
+    <thead>
+      <tr>
+        <th class="col-narrow">구분</th>
+        <th class="col-type">교과(군)</th>
+        <th class="col-subject">세부과목</th>
+        <th class="col-sem">1학기</th>
+        <th class="col-sem">2학기</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td rowspan="37" class="section-header">학생<br>선택<br>(3학년)</td>
         <td rowspan="2" class="category-cell color-korean">국어</td>
         <td class="subject-cell color-korean">주제 탐구 독서</td>
-        <td class="color-korean">4</td>
         <td class="color-korean">3</td>
         <td class="color-korean"></td>
-        <td class="color-korean"></td>
-        <td class="color-korean">3</td>
-        <td class="color-korean"></td>
-        <td rowspan="2" class="category-cell"><span class="tag">[택3]</span><br>9</td>
-        <td rowspan="37" class="category-cell"></td>
       </tr>
       <tr>
         <td class="subject-cell color-korean">매체 디사중화</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">3</td>
-        <td class="color-korean"></td>
-        <td class="color-korean"></td>
         <td class="color-korean">3</td>
         <td class="color-korean"></td>
       </tr>
       <tr>
         <td rowspan="3" class="category-cell color-math">수학</td>
         <td class="subject-cell color-math">수학과 문화</td>
-        <td class="color-math">4</td>
-        <td class="color-math">3</td>
-        <td class="color-math"></td>
-        <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">3</td>
-        <td rowspan="6" class="category-cell"><span class="tag">[택2]</span><br>6</td>
       </tr>
       <tr>
         <td class="subject-cell color-math">기하</td>
-        <td class="color-math">4</td>
-        <td class="color-math">3</td>
-        <td class="color-math"></td>
-        <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-math">미적분 II</td>
-        <td class="color-math">4</td>
-        <td class="color-math">3</td>
-        <td class="color-math"></td>
-        <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">3</td>
       </tr>
       <tr>
         <td class="category-cell color-english">영어</td>
         <td class="subject-cell color-english">심화 영어</td>
-        <td class="color-english">4</td>
-        <td class="color-english">3</td>
-        <td class="color-english"></td>
-        <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english">3</td>
       </tr>
       <tr>
         <td class="category-cell color-korean">국어<br>융합</td>
         <td class="subject-cell color-korean">독서 토론과 글쓰기</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">3</td>
-        <td class="color-korean"></td>
-        <td class="color-korean"></td>
         <td class="color-korean"></td>
         <td class="color-korean">3</td>
       </tr>
       <tr>
         <td class="category-cell color-math">수학<br>융합</td>
         <td class="subject-cell color-math">수학과제 탐구</td>
-        <td class="color-math">4</td>
-        <td class="color-math">3</td>
-        <td class="color-math"></td>
-        <td class="color-math"></td>
         <td class="color-math"></td>
         <td class="color-math">3</td>
       </tr>
       <tr>
         <td class="category-cell color-english">영어<br>융합</td>
         <td class="subject-cell color-english">심화 영어 독해와 작문</td>
-        <td class="color-english">4</td>
-        <td class="color-english">3</td>
-        <td class="color-english"></td>
-        <td class="color-english"></td>
         <td class="color-english"></td>
         <td class="color-english">3</td>
-        <td rowspan="4" class="category-cell"><span class="tag">[택1]</span><br>3</td>
       </tr>
       <tr>
         <td class="category-cell color-korean">국어<br>융합</td>
         <td class="subject-cell color-korean">언어생활 탐구</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean">4</td>
-        <td class="color-korean"></td>
-        <td class="color-korean"></td>
         <td class="color-korean">4</td>
         <td class="color-korean"></td>
       </tr>
@@ -676,269 +507,147 @@
         <td class="category-cell color-math">수학<br>융합</td>
         <td class="subject-cell color-math">실용 통계</td>
         <td class="color-math">4</td>
-        <td class="color-math">4</td>
-        <td class="color-math"></td>
-        <td class="color-math"></td>
-        <td class="color-math">4</td>
         <td class="color-math"></td>
       </tr>
       <tr>
         <td class="category-cell color-english">영어<br>융합</td>
         <td class="subject-cell color-english">미디어 영어</td>
         <td class="color-english">4</td>
-        <td class="color-english">4</td>
-        <td class="color-english"></td>
-        <td class="color-english"></td>
-        <td class="color-english">4</td>
         <td class="color-english"></td>
       </tr>
       <tr>
         <td rowspan="5" class="category-cell color-social">사회</td>
         <td class="subject-cell color-social">세계사</td>
-        <td class="color-social">4</td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
-        <td class="color-social"></td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td rowspan="5" class="category-cell"><span class="tag">[택4]</span><br>12</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">세계시민과 지리</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td class="subject-cell color-social">현대사회의 윤리</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td class="subject-cell color-social">경제</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td class="subject-cell color-social">법과 사회</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social">3</td>
         <td class="color-social"></td>
       </tr>
       <tr>
         <td rowspan="8" class="category-cell color-science">과학</td>
         <td class="subject-cell color-science">역학과 에너지</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
-        <td rowspan="8" class="category-cell"><span class="tag">[택4]</span><br>12</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">전자기와 양자</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">물질과 에너지</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">화학 반응의 세계</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">생명의 유전</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">세포와 물질대사</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">지구시스템과학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-science">행성우주과학</td>
-        <td class="color-science">4</td>
-        <td class="color-science">3</td>
-        <td class="color-science"></td>
-        <td class="color-science"></td>
         <td class="color-science"></td>
         <td class="color-science">3</td>
       </tr>
       <tr>
         <td rowspan="6" class="category-cell color-social">사회<br>융합</td>
         <td class="subject-cell color-social">금융과 경제생활</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
-        <td rowspan="6" class="category-cell"><span class="tag">[택4]</span><br>12</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">기술변화의 지속가능한 세계</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">역사로 탐구하는 현대 세계</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">융리문제 탐구</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">과학의 역사와 문화</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
       </tr>
       <tr>
         <td class="subject-cell color-social">기후변화와 환경생태</td>
-        <td class="color-social">4</td>
-        <td class="color-social">3</td>
-        <td class="color-social"></td>
-        <td class="color-social"></td>
         <td class="color-social"></td>
         <td class="color-social">3</td>
       </tr>
       <tr>
         <td rowspan="3" class="category-cell color-civic">교양</td>
         <td class="subject-cell color-civic">인간과 심리</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
-        <td rowspan="3" class="category-cell"><span class="tag">[택1]</span><br>2</td>
       </tr>
       <tr>
         <td class="subject-cell color-civic">보건</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
       </tr>
       <tr>
         <td class="subject-cell color-civic">손톱</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
       </tr>
       <tr>
         <td rowspan="3" class="category-cell color-civic">교양</td>
         <td class="subject-cell color-civic">논리와 사고</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
-        <td rowspan="3" class="category-cell"><span class="tag">[택1]</span><br>2</td>
       </tr>
       <tr>
         <td class="subject-cell color-civic">인간과 철학</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
       </tr>
       <tr>
         <td class="subject-cell color-civic">인간과 경제활동</td>
-        <td class="color-civic">3</td>
-        <td class="color-civic">2</td>
-        <td class="color-civic"></td>
-        <td class="color-civic"></td>
         <td class="color-civic"></td>
         <td class="color-civic">2</td>
-      </tr>
-      <!-- 최종 소계 -->
-      <tr class="total-row">
-        <td colspan="3">소계</td>
-        <td>12</td>
-        <td>15</td>
-        <td>20</td>
-        <td>27</td>
-        <td>74</td>
-        <td>—</td>
       </tr>
     </tbody>
   </table>
+
 </div>
 </body>
 </html>
