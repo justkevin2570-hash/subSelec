@@ -435,11 +435,6 @@
             <div class="step-circle">3</div>
             <span class="step-label">2학기 선택</span>
         </div>
-        <div class="step-line" data-line="3"></div>
-        <div class="step-item" data-step="4">
-            <div class="step-circle">4</div>
-            <span class="step-label">이유 작성</span>
-        </div>
     </div>
 
     <form id="surveyForm" onsubmit="return false;">
@@ -527,21 +522,7 @@
             </div>
             <div class="nav-buttons">
                 <button type="button" class="btn-prev" onclick="goToStep(2)">← 이전</button>
-                <button type="button" class="btn-next" id="btnNext3" disabled onclick="goToStep(4)">다음 단계 →</button>
-            </div>
-        </div>
-
-        <!-- 4단계: 선택 이유 -->
-        <div class="step-content" id="step4">
-            <div class="section-divider">📝 선택한 이유 글쓰기</div>
-            <div class="question-card">
-                <div class="question-title">선택한 과목을 고른 이유</div>
-                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">이번에 선택한 과목들을 고른 이유를 자유롭게 적어주세요.</p>
-                <textarea id="selectionReason" placeholder="정성껏 잘 쓴 학생 10명 상품 증정합니다." rows="4" style="width: 100%; border: 2px solid #f0f0f0; border-radius: 12px; padding: 14px 16px; font-size: 16px; outline: none; box-sizing: border-box; font-family: 'Pretendard', sans-serif; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary-pink)'; this.style.backgroundColor='var(--bg-color)';" onblur="this.style.borderColor='#f0f0f0'; this.style.backgroundColor='';"></textarea>
-            </div>
-            <div class="nav-buttons">
-                <button type="button" class="btn-prev" onclick="goToStep(3)">← 이전</button>
-                <button type="button" class="btn-submit" id="btnSubmit" onclick="handleSubmit()">선택 완료 및 제출하기</button>
+                <button type="button" class="btn-submit" id="btnSubmit" disabled onclick="handleSubmit()">선택 완료 및 제출하기</button>
             </div>
         </div>
     </form>
@@ -607,9 +588,6 @@
             const info = document.querySelector('input[name="info2"]:checked');
             return tamgu1.length === 3 && art !== null && info !== null;
         }
-        if (step === 4) {
-            return true;
-        }
         return false;
     }
 
@@ -624,10 +602,7 @@
         }
         if (currentStep === 3) {
             const valid = validateStep(3);
-            document.getElementById('btnNext3').disabled = !valid;
-        }
-        if (currentStep === 4) {
-            document.getElementById('btnSubmit').disabled = false;
+            document.getElementById('btnSubmit').disabled = !valid;
         }
     }
 
@@ -687,8 +662,6 @@
         const name = document.getElementById('name').value.trim();
         const studentId = document.getElementById('studentId').value.trim();
 
-        const selectionReason = document.getElementById('selectionReason').value.trim();
-
         const sem1Tamgu = Array.from(document.querySelectorAll('[data-group="sem1-tamgu"] input:checked'))
             .map(el => el.value);
         const sem1Info = document.querySelector('input[name="info1"]:checked')?.value || '';
@@ -715,9 +688,6 @@
             '  예술: ' + sem2Art,
             '  정보/교양: ' + sem2Info,
             '',
-            '📝 선택 이유',
-            '  선택 이유: ' + (selectionReason || '없음'),
-            '',
             '제출하시겠습니까?',
         ].join('\n');
 
@@ -739,7 +709,7 @@
                     sem2Info: sem2Info,
                     jointCourse: '',
                     spaceEdu: '',
-                    selectionReason: selectionReason
+                    selectionReason: ''
                 })
             });
             alert('선택과목을 바꾸고 싶으면 새로 작성하면 됩니다. 이전 내용은 삭제 처리됩니다.');
