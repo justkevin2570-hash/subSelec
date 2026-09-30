@@ -438,11 +438,6 @@
         <div class="step-line" data-line="3"></div>
         <div class="step-item" data-step="4">
             <div class="step-circle">4</div>
-            <span class="step-label">추가 조사</span>
-        </div>
-        <div class="step-line" data-line="4"></div>
-        <div class="step-item" data-step="5">
-            <div class="step-circle">5</div>
             <span class="step-label">이유 작성</span>
         </div>
     </div>
@@ -474,9 +469,7 @@
                     <label class="option-item"><input type="checkbox" value="윤리와 사상"><span>윤리와 사상</span></label>
                     <label class="option-item"><input type="checkbox" value="한국지리 탐구"><span>한국지리 탐구</span></label>
                     <label class="option-item"><input type="checkbox" value="물리학"><span>물리학</span></label>
-                    <label class="option-item"><input type="checkbox" value="화학"><span>화학</span></label>
                     <label class="option-item"><input type="checkbox" value="생명과학"><span>생명과학</span></label>
-                    <label class="option-item"><input type="checkbox" value="지구과학"><span>지구과학</span></label>
                 </div>
             </div>
             <div class="question-card">
@@ -511,12 +504,10 @@
                     <label class="option-item"><input type="checkbox" value="동아시아 역사 기행"><span>동아시아 역사 기행</span><span class="lock-tag">이미 선택</span></label>
                     <label class="option-item"><input type="checkbox" value="윤리와 사상"><span>윤리와 사상</span><span class="lock-tag">이미 선택</span></label>
                     <label class="option-item"><input type="checkbox" value="한국지리 탐구"><span>한국지리 탐구</span><span class="lock-tag">이미 선택</span></label>
-                    <label class="option-item"><input type="checkbox" value="물리학"><span>물리학</span><span class="lock-tag">이미 선택</span></label>
                     <label class="option-item"><input type="checkbox" value="화학"><span>화학</span><span class="lock-tag">이미 선택</span></label>
-                    <label class="option-item"><input type="checkbox" value="생명과학"><span>생명과학</span><span class="lock-tag">이미 선택</span></label>
                     <label class="option-item"><input type="checkbox" value="지구과학"><span>지구과학</span><span class="lock-tag">이미 선택</span></label>
                     <label class="option-item"><input type="checkbox" value="법과 사회"><span>법과 사회</span><span class="lock-tag">이미 선택</span></label>
-                    <label class="option-item"><input type="checkbox" value="생물의 유전"><span>생물의 유전</span><span class="lock-tag">이미 선택</span></label>
+                    <label class="option-item"><input type="checkbox" value="생물의 유전" data-requires="생명과학"><span>생물의 유전(1학기 생명과학 수강자만 선택 가능)</span></label>
                 </div>
             </div>
             <div class="question-card">
@@ -540,30 +531,8 @@
             </div>
         </div>
 
-        <!-- 4단계: 추가 조사 -->
+        <!-- 4단계: 선택 이유 -->
         <div class="step-content" id="step4">
-            <div class="section-divider">📋 추가 조사 (선택사항)</div>
-            <div class="question-card">
-                <div class="question-title">공동교육과정</div>
-                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">고흥고에 없는 교육과정 중 수강하고 싶은 과목이 있으면 적으시오.</p>
-                <input type="text" id="jointCourse" maxlength="100">
-            </div>
-            <div class="question-card">
-                <div class="question-title">우주 관련 추가교육과정 참여 의사</div>
-                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">우주 관련 추가 교육과정에 참여할 의사가 있으십니까?</p>
-                <div class="option-group" data-group="space-edu">
-                    <label class="option-item"><input type="radio" name="spaceEdu" value="예"><span>예</span></label>
-                    <label class="option-item"><input type="radio" name="spaceEdu" value="아니오"><span>아니오</span></label>
-                </div>
-            </div>
-            <div class="nav-buttons">
-                <button type="button" class="btn-prev" onclick="goToStep(3)">← 이전</button>
-                <button type="button" class="btn-next" id="btnNext4" onclick="goToStep(5)">다음 단계 →</button>
-            </div>
-        </div>
-
-        <!-- 5단계: 선택 이유 -->
-        <div class="step-content" id="step5">
             <div class="section-divider">📝 선택한 이유 글쓰기</div>
             <div class="question-card">
                 <div class="question-title">선택한 과목을 고른 이유</div>
@@ -571,7 +540,7 @@
                 <textarea id="selectionReason" placeholder="정성껏 잘 쓴 학생 10명 상품 증정합니다." rows="4" style="width: 100%; border: 2px solid #f0f0f0; border-radius: 12px; padding: 14px 16px; font-size: 16px; outline: none; box-sizing: border-box; font-family: 'Pretendard', sans-serif; resize: vertical; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--primary-pink)'; this.style.backgroundColor='var(--bg-color)';" onblur="this.style.borderColor='#f0f0f0'; this.style.backgroundColor='';"></textarea>
             </div>
             <div class="nav-buttons">
-                <button type="button" class="btn-prev" onclick="goToStep(4)">← 이전</button>
+                <button type="button" class="btn-prev" onclick="goToStep(3)">← 이전</button>
                 <button type="button" class="btn-submit" id="btnSubmit" onclick="handleSubmit()">선택 완료 및 제출하기</button>
             </div>
         </div>
@@ -641,9 +610,6 @@
         if (step === 4) {
             return true;
         }
-        if (step === 5) {
-            return true;
-        }
         return false;
     }
 
@@ -661,9 +627,6 @@
             document.getElementById('btnNext3').disabled = !valid;
         }
         if (currentStep === 4) {
-            document.getElementById('btnNext4').disabled = false;
-        }
-        if (currentStep === 5) {
             document.getElementById('btnSubmit').disabled = false;
         }
     }
@@ -702,7 +665,10 @@
             const checkbox = item.querySelector('input[type="checkbox"]');
             if (!checkbox) return;
 
-            if (sem1Selected.has(checkbox.value)) {
+            const requires = checkbox.dataset.requires;
+            const blocked = requires ? !sem1Selected.has(requires) : sem1Selected.has(checkbox.value);
+
+            if (blocked) {
                 item.classList.add('locked');
                 checkbox.disabled = true;
                 checkbox.checked = false;
@@ -721,8 +687,6 @@
         const name = document.getElementById('name').value.trim();
         const studentId = document.getElementById('studentId').value.trim();
 
-        const jointCourse = document.getElementById('jointCourse').value.trim();
-        const spaceEdu = document.querySelector('input[name="spaceEdu"]:checked')?.value || '';
         const selectionReason = document.getElementById('selectionReason').value.trim();
 
         const sem1Tamgu = Array.from(document.querySelectorAll('[data-group="sem1-tamgu"] input:checked'))
@@ -751,10 +715,6 @@
             '  예술: ' + sem2Art,
             '  정보/교양: ' + sem2Info,
             '',
-            '📋 추가 조사',
-            '  공동교육과정: ' + (jointCourse || '없음'),
-            '  우주 추가교육과정: ' + (spaceEdu || '미응답'),
-            '',
             '📝 선택 이유',
             '  선택 이유: ' + (selectionReason || '없음'),
             '',
@@ -777,8 +737,8 @@
                     sem2Tamgu2: '',
                     sem2Art: sem2Art,
                     sem2Info: sem2Info,
-                    jointCourse: jointCourse,
-                    spaceEdu: spaceEdu,
+                    jointCourse: '',
+                    spaceEdu: '',
                     selectionReason: selectionReason
                 })
             });
