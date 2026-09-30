@@ -231,6 +231,14 @@
             font-size: 17px;
         }
 
+        .notice-red {
+            color: #ff5252;
+            font-size: 13px;
+            margin-bottom: 14px;
+            display: block;
+            padding-left: 4px;
+        }
+
         .nav-buttons {
             display: flex;
             gap: 12px;
@@ -419,6 +427,7 @@
             <div class="section-divider">📅 3학년 1학기 선택</div>
             <div class="question-card">
                 <div class="question-title">국영수 [택 2]</div>
+                <span class="notice-red">! 독서 토론과 글쓰기, 심화 영어 독해와 작문 중 1개만 선택 가능합니다</span>
                 <div class="option-group" data-group="sem1-gys">
                     <label class="option-item"><input type="checkbox" value="독서 토론과 글쓰기"><span>독서 토론과 글쓰기</span></label>
                     <label class="option-item"><input type="checkbox" value="기하"><span>기하</span></label>
@@ -462,6 +471,7 @@
             <div class="section-divider">📅 3학년 2학기 선택</div>
             <div class="question-card">
                 <div class="question-title">국영수1 [택 3]</div>
+                <span class="notice-red">! 주제 탐구 독서, 매체 의사소통 중 1개만 선택 가능합니다</span>
                 <div class="option-group" data-group="sem2-gys1">
                     <label class="option-item"><input type="checkbox" value="주제 탐구 독서"><span>주제 탐구 독서</span></label>
                     <label class="option-item"><input type="checkbox" value="매체 의사소통"><span>매체 의사소통</span></label>
@@ -505,11 +515,6 @@
         <!-- 4단계: 추가 조사 -->
         <div class="step-content" id="step4">
             <div class="section-divider">📋 추가 조사 (선택사항)</div>
-            <div class="question-card">
-                <div class="question-title">공동교육과정</div>
-                <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">고흥고에 없는 교육과정 중 수강하고 싶은 과목이 있으면 적으시오.</p>
-                <input type="text" id="jointCourse" maxlength="100">
-            </div>
             <div class="question-card">
                 <div class="question-title">우주 관련 추가교육과정 참여 의사</div>
                 <p style="font-size: 13px; color: #888; margin: -10px 0 12px 0;">우주 관련 추가 교육과정에 참여할 의사가 있으십니까?</p>
@@ -642,13 +647,28 @@
         toast._timeout = setTimeout(() => toast.classList.remove('show'), 1500);
     }
 
+    // 특정 두 과목 중 1개만 선택 가능하게 제한
+    function setupExclusivePair(groupSelector, valueA, valueB) {
+        const container = document.querySelector(groupSelector);
+        if (!container) return;
+        container.addEventListener('change', (e) => {
+            if (e.target.type !== 'checkbox') return;
+            const checkedValues = Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(el => el.value);
+            if (checkedValues.includes(valueA) && checkedValues.includes(valueB)) {
+                e.target.checked = false;
+                showToast('두 과목 중 1개만 선택할 수 있습니다');
+            }
+            updateButtons();
+        });
+    }
+
     function handleSubmit() {
         if (!validateStep(3)) return;
 
         const name = document.getElementById('name').value.trim();
         const studentId = document.getElementById('studentId').value.trim();
 
-        const jointCourse = document.getElementById('jointCourse').value.trim();
         const spaceEdu = document.querySelector('input[name="spaceEdu"]:checked')?.value || '';
         const selectionReason = document.getElementById('selectionReason').value.trim();
 
@@ -683,7 +703,6 @@
             '  교양: ' + sem2Gy,
             '',
             '📋 추가 조사',
-            '  공동교육과정: ' + (jointCourse || '없음'),
             '  우주 추가교육과정: ' + (spaceEdu || '미응답'),
             '',
             '📝 선택 이유',
@@ -708,7 +727,7 @@
                     sem2Gys2: sem2Gys2,
                     sem2Tamgu: sem2Tamgu,
                     sem2Gy: sem2Gy,
-                    jointCourse: jointCourse,
+                    jointCourse: '',
                     spaceEdu: spaceEdu,
                     selectionReason: selectionReason
                 })
@@ -725,6 +744,9 @@
     setupMaxSelect('[data-group="sem1-tamgu"]', 4);
     setupMaxSelect('[data-group="sem2-gys1"]', 3);
     setupMaxSelect('[data-group="sem2-tamgu"]', 4);
+
+    setupExclusivePair('[data-group="sem1-gys"]', '독서 토론과 글쓰기', '심화 영어 독해와 작문');
+    setupExclusivePair('[data-group="sem2-gys1"]', '주제 탐구 독서', '매체 의사소통');
 
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.addEventListener('change', updateButtons);
