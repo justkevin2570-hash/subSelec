@@ -269,8 +269,10 @@
             font-weight: 400;
         }
 
-        /* 생명과학 안내문구: 옅은 파란색 */
-        .requires-note-blue {
+        /* 안내문구: 옅은 파란색 (잠금 여부와 무관하게 유지) */
+        .option-item span.requires-note-blue,
+        .option-item.locked span.requires-note-blue,
+        .option-item.locked.option-requires span.requires-note-blue {
             color: #64b5f6;
         }
 
