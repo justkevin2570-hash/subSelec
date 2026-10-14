@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1학년 선택교과 2차 선택 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12263f;--sub:#52627a;--bg:#f4f7fb;--card:#fff;--line:#d5deea;--blue:#1f5fbf;--hl:#ffd23f;--red:#c62828;--redbg:#fdecec}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;word-break:keep-all}
+section{position:fixed;inset:0;display:none;overflow-y:auto;padding:48px 24px 104px;cursor:pointer}
+section.on{display:flex;animation:in .35s ease}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){section.on{animation:none}}
+.wrap{width:100%;max-width:980px;margin:auto}
+h2{font-size:clamp(26px,4vw,38px);font-weight:900;margin:0 0 8px;letter-spacing:-.02em}
+.lead{color:var(--sub);margin:0 0 28px;font-size:17px}
+/* cover */
+#cover{background:var(--ink);color:#fff}
+#cover .wrap{max-width:820px}
+#cover small{display:block;font-size:18px;color:#b9c8de;margin-bottom:14px}
+#cover h1{font-size:clamp(38px,8vw,76px);line-height:1.15;font-weight:900;margin:0 0 40px;letter-spacing:-.03em}
+.track{display:flex;gap:0;max-width:560px;border:2px solid #3b5278;border-radius:12px;overflow:hidden}
+.track div{flex:1;padding:14px 10px;text-align:center;font-weight:500;color:#9fb2cf;border-right:2px solid #3b5278}
+.track div:last-child{border-right:0}
+.track b{display:block;font-size:20px}
+.track .now{background:var(--hl);color:var(--ink)}
+.track .now b{font-weight:900}
+#cover p{margin:22px 0 0;color:#b9c8de}
+/* curriculum */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sem{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.sem h3{margin:0 0 14px;font-size:21px}
+.grp{border-top:1px solid var(--line);padding:12px 0}
+.grp:first-of-type{border-top:0}
+.gh{font-weight:700;font-size:15px;margin-bottom:8px}
+.gh span{color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#eaf0f9;border-radius:8px;padding:4px 10px;font-size:14px}
+.chip.new{background:var(--hl);font-weight:700;outline:2px solid var(--ink)}
+.chip.new i{font-style:normal;font-size:12px;background:var(--ink);color:var(--hl);border-radius:4px;padding:0 5px;margin-left:5px}
+.change{margin-top:22px;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:20px 24px}
+.change h3{margin:0 0 8px;font-size:20px}
+.change .arrow{font-size:clamp(20px,3vw,26px);font-weight:900;margin:6px 0 10px}
+.change .arrow s{color:var(--sub);font-weight:500}
+.change .arrow mark{background:var(--hl);padding:0 6px}
+.change p{margin:4px 0;color:var(--sub)}
+/* caution */
+#caution{background:var(--redbg)}
+#caution h2{color:var(--red)}
+.pt{background:#fff;border-left:8px solid var(--red);border-radius:10px;padding:18px 22px;margin-bottom:14px;font-size:18px}
+.pt b{display:block;font-size:21px;margin-bottom:2px}
+.pt span{color:var(--sub);font-size:16px}
+/* qr */
+.qrbox{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.qrbox img{width:min(320px,70vw);border:1px solid var(--line);border-radius:14px;background:#fff;padding:8px}
+.period{background:var(--ink);color:#fff;border-radius:14px;padding:20px 24px;margin-bottom:18px}
+.period small{display:block;color:#b9c8de;font-size:15px}
+.period strong{font-size:clamp(24px,4vw,36px);font-weight:900}
+.steps{margin:0;padding-left:22px;font-size:17px}
+.nav{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:6px 8px;box-shadow:0 4px 14px rgba(18,38,63,.25);cursor:default}
+.nav button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:8px 20px;background:var(--ink);color:#fff;cursor:pointer}
+.nav button:disabled{background:#c9d3e1;cursor:default}
+.nav button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.nav span{font-weight:700;min-width:48px;text-align:center}
+@media(max-width:760px){.cols,.qrbox{grid-template-columns:1fr}.qrbox{justify-items:center}section{padding:32px 16px 100px}}
+</style>
+</head>
+<body>
+
+<section id="cover"><div class="wrap">
+  <small>1학년 학생 대상</small>
+  <h1>내년도 2학년<br>선택교과<br>2차 선택 안내</h1>
+  <div class="track" aria-label="선택 단계">
+    <div>1차<b>완료</b></div>
+    <div class="now">2차<b>지금</b></div>
+    <div>3차<b>조정</b></div>
+  </div>
+  <p>화면을 클릭하거나 아래 버튼을 누르면 다음 페이지로 넘어갑니다.</p>
+</div></section>
+
+<section id="table"><div class="wrap">
+  <h2>2학년 교육과정표</h2>
+  <p class="lead">학기마다 선택 묶음이 있고, 묶음별로 정해진 수만큼 고릅니다. (택2 = 2과목 선택)</p>
+  <div class="cols" id="cols"></div>
+  <div class="change">
+    <h3>1차와 달라진 점</h3>
+    <div class="arrow"><s>사회문제 탐구, 융합과학 탐구</s> → <mark>법과 사회, 생물의 유전</mark></div>
+    <p>2학년 2학기 [택3] 9학점 묶음에서 앞의 두 과목은 3학년으로 옮겨가고, 3학년 과목이던 뒤의 두 과목이 그 자리에 들어왔습니다.</p>
+    <div class="arrow" style="margin-top:16px"><s>실천하는 세계시민</s> → <mark>생태와 환경</mark></div>
+    <p>2학년 2학기 [택1] 3학점 교양 묶음의 과목이 바뀌었습니다.</p>
+    <p>이 외에는 1차와 모두 같습니다. 1차에서 바뀐 과목을 골랐다면 다시 확인하세요.</p>
+  </div>
+</div></section>
+
+<section id="caution"><div class="wrap">
+  <h2>주의 사항</h2>
+  <p class="lead">신청하기 전에 꼭 읽어 주세요.</p>
+  <div class="pt"><b>이번 2차가 사실상 최종입니다.</b><span>3차가 있지만, 2차에서 낸 선택을 기준으로 진행됩니다.</span></div>
+  <div class="pt"><b>3차는 조정하는 단계입니다.</b><span>인원이 맞지 않는 과목을 맞추는 정도로만 운영됩니다.</span></div>
+  <div class="pt"><b>3차에서 과목을 바꾸기는 매우 어렵습니다.</b><span>지금 신중하게 정하고, 신청 전에 친구가 아닌 나의 진로를 먼저 생각하세요.</span></div>
+</div></section>
+
+<section id="qr"><div class="wrap">
+  <h2>QR코드로 신청하기</h2>
+  <p class="lead">스마트폰으로 QR코드를 스캔하면 선택 페이지로 연결됩니다.</p>
+  <div class="qrbox">
+    <img src="data:image/png;base64,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" alt="2차 선택 신청 페이지로 연결되는 QR코드">
+    <div>
+      <div class="period"><small>신청 기간</small><strong>10. 15.(목) ~ 10. 20.(화)</strong></div>
+      <ol class="steps">
+        <li>카메라 앱으로 QR코드를 스캔합니다.</li>
+        <li>선택 페이지에서 묶음별로 과목을 고릅니다.</li>
+        <li>기간 안에 제출을 마칩니다.</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<div class="nav">
+  <button id="prev" type="button">이전</button>
+  <span id="pg"></span>
+  <button id="next" type="button">다음</button>
+</div>
+<script>
+const S1=[["택2",6,["사회와 문화","동아시아 역사 기행","윤리와 사상","한국지리 탐구","물리학","화학","생명과학","지구과학"]],
+["택1",3,["미술 창작","음악 연주와 창작"]],
+["택1",3,["인공지능 기초","시사 토론 및 비평 실습","이음 영어"]]];
+const S2=[["택3",9,["사회와 문화","동아시아 역사 기행","윤리와 사상","한국지리 탐구","물리학","화학","생명과학","지구과학","법과 사회","생물의 유전"]],
+["택1",3,["미술 감상과 비평","음악 감상과 비평"]],
+["택1",3,["소프트웨어와 생활","생활과 수학","생태와 환경"]]];
+const NEW=["법과 사회","생물의 유전","생태와 환경"];
+const mk=(t,d)=>`<div class="sem"><h3>${t}</h3>`+d.map(g=>`<div class="grp"><div class="gh"><span>[${g[0]}]</span> ${g[1]}학점</div><div class="chips">`+g[2].map(n=>NEW.includes(n)?`<span class="chip new">${n}<i>변경</i></span>`:`<span class="chip">${n}</span>`).join("")+`</div></div>`).join("")+`</div>`;
+document.getElementById("cols").innerHTML=mk("2학년 1학기",S1)+mk("2학년 2학기",S2);
+
+const P=[...document.querySelectorAll("section")];let i=0;
+const go=n=>{i=Math.max(0,Math.min(P.length-1,n));P.forEach((p,k)=>p.classList.toggle("on",k===i));P[i].scrollTop=0;
+pg.textContent=(i+1)+" / "+P.length;prev.disabled=i===0;next.disabled=i===P.length-1;};
+prev.onclick=()=>go(i-1);next.onclick=()=>go(i+1);
+document.addEventListener("click",e=>{if(!e.target.closest(".nav"))go(i+1)});
+document.addEventListener("keydown",e=>{if(["ArrowRight"," ","PageDown"].includes(e.key)){e.preventDefault();go(i+1)}else if(["ArrowLeft","PageUp"].includes(e.key)){go(i-1)}});
+go(0);
+</script>
+</body>
+</html>
