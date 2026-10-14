@@ -42,6 +42,10 @@ h2{font-size:clamp(26px,4vw,38px);font-weight:900;margin:0 0 8px;letter-spacing:
 .chip{background:#eaf0f9;border-radius:8px;padding:4px 10px;font-size:14px}
 .chip.new{background:var(--hl);font-weight:700;outline:2px solid var(--ink)}
 .chip.new i{font-style:normal;font-size:12px;background:var(--ink);color:var(--hl);border-radius:4px;padding:0 5px;margin-left:5px}
+.chip.closed{background:#eceff3;color:#8a95a6;text-decoration:line-through}
+.chip.closed i{font-style:normal;font-size:12px;background:var(--red);color:#fff;border-radius:4px;padding:0 5px;margin-left:5px;text-decoration:none;display:inline-block}
+.change .arrow.closed{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.change .arrow.closed mark{background:var(--redbg);color:var(--red)}
 .change{margin-top:22px;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:20px 24px}
 .change h3{margin:0 0 8px;font-size:20px}
 .change .arrow{font-size:clamp(20px,3vw,26px);font-weight:900;margin:6px 0 10px}
@@ -87,10 +91,12 @@ h2{font-size:clamp(26px,4vw,38px);font-weight:900;margin:0 0 8px;letter-spacing:
   <p class="lead">학기마다 선택 묶음이 있고, 묶음별로 정해진 수만큼 고릅니다. (택2 = 2과목 선택)</p>
   <div class="cols" id="cols"></div>
   <div class="change">
-    <h3>1차와 달라진 점: 1개</h3>
+    <h3>1차와 달라진 점: 2개</h3>
     <div class="arrow"><s>수학과 문화</s> → <mark>융합사고수학</mark></div>
     <p>3학년 2학기, [택3] 9학점 묶음 안의 수학 과목(3학점)입니다.</p>
-    <p>이 과목 외에는 1차와 모두 같습니다. 1차에서 '수학과 문화'를 골랐다면 다시 확인하세요.</p>
+    <div class="arrow closed"><mark>행성우주과학</mark> 폐강</div>
+    <p>3학년 1학기, [택4] 12학점 묶음 안의 과학 과목입니다. 개설되지 않으므로 선택할 수 없습니다.</p>
+    <p>이 두 과목 외에는 1차와 모두 같습니다. 1차에서 '수학과 문화' 또는 '행성우주과학'을 골랐다면 다시 확인하세요.</p>
   </div>
 </div></section>
 
@@ -131,7 +137,7 @@ const S2=[["택3",9,["주제 탐구 독서","매체 의사소통","융합사고�
 ["택1",4,["언어생활 탐구","실용 통계","미디어 영어"]],
 ["택4",12,["금융과 경제생활","역사로 탐구하는 현대 세계","윤리문제 탐구","과학의 역사와 문화","기후변화와 환경생태"]],
 ["택1",2,["논리와 사고","인간과 철학","인간과 경제활동"]]];
-const mk=(t,d)=>`<div class="sem"><h3>${t}</h3>`+d.map(g=>`<div class="grp"><div class="gh"><span>[${g[0]}]</span> ${g[1]}학점</div><div class="chips">`+g[2].map(n=>n==="융합사고수학"?`<span class="chip new">${n}<i>변경</i></span>`:`<span class="chip">${n}</span>`).join("")+`</div></div>`).join("")+`</div>`;
+const mk=(t,d)=>`<div class="sem"><h3>${t}</h3>`+d.map(g=>`<div class="grp"><div class="gh"><span>[${g[0]}]</span> ${g[1]}학점</div><div class="chips">`+g[2].map(n=>n==="융합사고수학"?`<span class="chip new">${n}<i>변경</i></span>`:n==="행성우주과학"?`<span class="chip closed">${n}<i>폐강</i></span>`:`<span class="chip">${n}</span>`).join("")+`</div></div>`).join("")+`</div>`;
 document.getElementById("cols").innerHTML=mk("3학년 1학기",S1)+mk("3학년 2학기",S2);
 
 const P=[...document.querySelectorAll("section")];let i=0;
